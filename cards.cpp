@@ -5,7 +5,6 @@
 cardsDeck::cardsDeck ()
 {
 	initDeck ();
-	srand (time (NULL));
 	getOutOfJailChance = false;
 	getOutOfJailCommunityChest = false;
 }
@@ -79,7 +78,7 @@ void cardsDeck::initDeck ()
 card cardsDeck::chance ()	//WHAT THE DEUCE?
 {
 	char card = rand () % (14 - getOutOfJailChance);
-	if (card == 13);
+	if (card == 13)
 		getOutOfJailChance = true;
 	return deck [card];
 }
@@ -87,7 +86,7 @@ card cardsDeck::chance ()	//WHAT THE DEUCE?
 card cardsDeck::communityChest ()	//GIGGITY! GIGGITY! GIGGITY!
 {
 	char card = 14 + rand () % (16 - getOutOfJailCommunityChest);
-	if (card == 29);
+	if (card == 29)
 		getOutOfJailCommunityChest = true;
 	return deck [card];
 }

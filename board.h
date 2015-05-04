@@ -1,37 +1,28 @@
 #ifndef BOARD_H
 #define BOARD_H
-#include <allegro5\allegro_ttf.h>
-#include <allegro5\allegro_primitives.h>
-#include <allegro5\allegro_audio.h>
-#include <allegro5\allegro_acodec.h>
-
-#include "cards.h"
-#include "board.h"
-#include "player.h"
+#include <string>
+#include "al.h"
 using namespace std;
 
-#define WIDTH 1000	//FALTARIA HACERLO UN POCO MAS ANCHO PARA PONER LOS DATOS DEL JUEGO, ESTO ES SOLO DE PRUEBA
 #define HEIGHT 1000
-typedef ALLEGRO_BITMAP* bitmap;
-typedef ALLEGRO_DISPLAY* display;
-typedef ALLEGRO_EVENT_QUEUE* eventQueue;
-typedef ALLEGRO_TIMER* timer;
-typedef ALLEGRO_FONT* font;
-void main_menu(font);
+#define WIDTH (HEIGHT * 1.3)	//FALTARIA HACERLO UN POCO MAS ANCHO PARA PONER LOS DATOS DEL JUEGO, ESTO ES SOLO DE PRUEBA
+								//AGREGUE 30% A LA DERECHA PARA VER COMO SE VEIA.
 
-struct land
+typedef struct
 {
 	string name;
 	char group;
-	short price, buildCost, rent [6]; //RENT COST PER BUILT BUILDING
-};
+	short price, buildCost, rent [6];	//RENT COST PER BUILT BUILDING
+} land;
 
 class board
 {
 public:
-	board ();
-	void print(void);
+
+	board (bitmap);
+	void print (void);
 private:
+
 	void initBoard ();
 	land boardArray [40];
 	bitmap b;
